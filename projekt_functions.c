@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <conio.h>
 
 
 void kreiranje(char* naziv, unsigned int* broj) {
@@ -68,7 +69,6 @@ void unosPolaznika(char* naziv, unsigned int* broj) {
 
 		printf("Broj odvozenih sati:\n");
 		scanf("%3s", novi.brojSati);
-		novi.sljedeciRed ='\n';
 
 
 		fseek(fp, sizeof(unsigned int) + ((*broj - 1) * sizeof(POLAZNIK)), SEEK_SET);
@@ -420,7 +420,7 @@ void selekcija(char* naziv, unsigned int* broj) {
 
 	printf("\n1-polozeni propisi:");
 	printf("\n2-polozena prva pomoc");
-	printf("\n2-placen vozacki\n");
+	printf("\n3-placen vozacki\n");
 	do {
 		scanf("%d", &opcija);
 		if (opcija < 1 || opcija > 3)
@@ -461,7 +461,7 @@ void propisi(char *naziv, unsigned int* broj) {
 
 		fread(broj, sizeof(int), 1, fp);
 
-		if (*broj == 0) {
+		if (*broj == 1) {
 			printf("Nije ni jedan polaznik unesen u datoteku\n");
 			fclose(fp);
 			return;
@@ -522,7 +522,7 @@ void prvaPomoc(char* naziv, unsigned int* broj) {
 
 		fread(broj, sizeof(unsigned int), 1, fp);
 
-		if (*broj == 0) {
+		if (*broj == 1) {
 			printf("Nije ni jedan polaznik unesen u datoteku\n");
 			fclose(fp);
 			return;
@@ -581,10 +581,9 @@ void placenVozacki(char* naziv, unsigned int* broj) {
 	}
 	else {
 		POLAZNIK* polaznici = NULL;
-
 		fread(broj, sizeof(unsigned int), 1, fp);
 
-		if (*broj == 0) {
+		if (*broj == 1) {
 			printf("Nije ni jedan polaznik unesen u datoteku\n");
 			fclose(fp);
 			return;
@@ -643,11 +642,11 @@ void izbornik(char* naziv, unsigned int* broj) {
 		printf("1 - unos polaznika\n");
 		printf("2 - pretrazivanje po prezimenu\n");
 		printf("3 - brisanje polaznika(preko OIB-a):\n");
-		printf("4 - sortiranje po broju odvozenih sati:\n");
-		printf("5 - pregled liste polaznika:\n");
-		printf("6 - odabir selekcije polaznika:\n");
-		printf("7 - brisanje datoteke:\n");
-		printf("0 - prekid programa:\n");
+		printf("4 - sortiranje po broju odvozenih sati\n");
+		printf("5 - pregled liste polaznika\n");
+		printf("6 - odabir selekcije polaznika\n");
+		printf("7 - brisanje datoteke\n");
+		printf("0 - prekid programa\n");
 		opcija = _getch();
 		switch (opcija) {
 		case '1':

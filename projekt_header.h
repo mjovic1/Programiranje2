@@ -10,7 +10,6 @@ typedef struct polaznik {
 	char polozenaPrvaPomoc[3];
 	char placenVozacki[3];
 	char brojSati[4];
-	char sljedeciRed;
 }POLAZNIK;
 
 
